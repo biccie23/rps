@@ -1,43 +1,34 @@
 
 function playRound(computer, player){
 
-
     if (computer === player.toLowerCase())
     {
         const newcomputer = getComputerChoice();
         return playRound(newcomputer, player);
     }
 
-    else if (player.toLowerCase() == "rock" && computer == "scissors"){
+    else if (
+            (player.toLowerCase() == "rock" && computer == "scissors") ||
+             (player.toLowerCase() == "paper" && computer == "rock") ||
+             (player.toLowerCase() == "scissors" && computer == "paper")
+             ){
          
-        return "You win! Rock beats Scissors";
+                return "You win!";
     }
-    else if (player.toLowerCase() == "paper" && computer == "rock"){
+       
+    else if (
+            (computer == "rock" && player.toLowerCase() == "scissors") ||
+            (computer == "paper" && player.toLowerCase() == "rock") ||
+            (computer== "scissors" && player.toLowerCase() == "paper")
+            ){
          
-        return "You win! Paper beats Rock";
-    }
-    else if (player.toLowerCase() == "scissors" && computer == "paper"){
-         
-        return "You win! Scissors beats Paper";
-    }
-    else if (computer == "rock" && player.toLowerCase() == "scissors"){
-         
-        return "You lose! Rock beats Scissors";
-    }
-    else if (computer == "paper" && player.toLowerCase() == "rock"){
-         
-        return "You lose! Paper beats Rock";
-    }
-
-    else if (computer== "scissors" && player.toLowerCase() == "paper"){
-         
-        return "You lose! Scissors beats Paper";
-    }
-
+                return "You lose!";
+    }   
 } 
 
-const rps = ["rock", "paper", "scissors"];
 
+//get random computer choice of rps
+const rps = ["rock", "paper", "scissors"];
 function getComputerChoice(){
      
     return rps[Math.floor(Math.random() * rps.length)];
